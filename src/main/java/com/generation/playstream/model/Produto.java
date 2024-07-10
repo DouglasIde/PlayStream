@@ -41,5 +41,54 @@ public class Produto {
 	@NotNull(message = "O atributo Preço é OBRIGATÓRIO!!")
 	@NumberFormat(pattern = "#.###.##")
 	private float  preco;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDesenvolvedor() {
+		return desenvolvedor;
+	}
+
+	public void setDesenvolvedor(String desenvolvedor) {
+		this.desenvolvedor = desenvolvedor;
+	}
+
+	public LocalDate getDataLancamento() {
+		return dataLancamento;
+	}
+
+	public void setDataLancamento(LocalDate dataLancamento) {
+		this.dataLancamento = dataLancamento;
+	}
+
+	public float getPreco() {
+		return preco;
+	}
+
+	public void setPreco(float preco) {
+		this.preco = preco;
+	}
+	
 	
 }
