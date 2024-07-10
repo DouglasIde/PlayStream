@@ -1,7 +1,8 @@
 package com.generation.playstream.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import org.springframework.format.annotation.NumberFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,8 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -33,12 +34,12 @@ public class Produto {
 	@Size(min = 3, max = 100, message = "O atributo Desenvolvedor deve conter entre 3 - 100 caracteres")
 	private String desenvolvedor;
 	
-	@NotBlank(message = "O atributo Data de Lançamento é OBRIGATÓRIO!!")
+	@NotNull(message = "O atributo Data de Lançamento é OBRIGATÓRIO!!")
 	@Column(name = "data_lancamento", nullable = false)
 	private LocalDate dataLancamento;
 	
-	@NotBlank(message = "O atributo Preço é OBRIGATÓRIO!!")
-	@Digits(integer = 10000, fraction = 2, message = "O preço deve ser um valor numérico com até 10000 dígitos inteiros e 2 decimais")
-	private BigDecimal preco;
+	@NotNull(message = "O atributo Preço é OBRIGATÓRIO!!")
+	@NumberFormat(pattern = "#.###.##")
+	private float  preco;
 	
 }
