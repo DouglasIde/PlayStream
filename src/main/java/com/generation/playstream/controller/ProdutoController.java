@@ -8,11 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.playstream.model.Produto;
 import com.generation.playstream.repository.IProdutoRepository;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/produtos")
@@ -38,5 +42,11 @@ public class ProdutoController {
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity<List<Produto>> getByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(produtosRepository.findAllByTituloContainingIgnoreCase(titulo));
-	}	
+	}
+	
+	@PostMapping
+	public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto){
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(produtosRepository.save(produto));
+	}
 }
